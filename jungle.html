@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de contact Richard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="stylejungle.css">
+    
+   
+</head>
+
+<body>
+    
+    <form 
+        onsubmit="sendEmail(); reset(); return false">
+        <h1> Envoyer un message</h1>
+
+        <div class="separation"></div>
+        <div class="social-media">
+            <p><i class="fa-brands fa-linkedin"></i></p>
+            <p><i class="fa-brands fa-internet-explorer"></i></p>
+        </div>
+        <p class="user-email">Détails de votre demande</p>
+
+        <div class="inputs">
+           
+            <div class="inputs-gauche">
+                <div class="groupe">
+                    <label>Votre Email</label>
+                    <input type="email" placeholder="Email" required>
+                    <i class="fa-sharp fa-solid fa-envelope"></i>
+                </div>
+                <div class="groupe">
+                    <label>Votre nom</label>
+                    <input type="text" placeholder="Nom">
+                    <i class="fa-sharp fa-solid fa-user"></i>
+                </div>
+                <div class="groupe">
+                    <label>Votre Telephone</label>
+                    <input type="tel" placeholder="Telephone">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+            </div>
+            <div class="inputs-droite">
+                <div class="groupe">
+                    <label>Votre message</label>
+                    <i class="fa-solid fa-pencil"></i>
+                    <textarea placeholder="...Votre message..."></textarea>
+
+                </div>
+
+            </div>
+        </div>
+
+        <p class="message-envoi">Merci de cliquer sur le bouton ci dessous pour le transmettre votre message
+        </p>
+        <div class="button-send" align="center">
+            <button type="submit">Envoyer</button>
+        </div>
+
+    </form>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.gmail.com",
+                Username : "iperscroll@gmail.com",
+                Password : "123Azerty",
+                To : 'rthourigny@gmail.com',
+                From : document.getElementById("email").value,
+                Subject : "Nouveau message depuis la fiche contact",
+                Body : "Name: " + document.getElementById(name).value
+                    + "<br> Email: " + document.getElementById(email).ariaValueText
+                    + "<br> Tel: " + document.getElementById(tel).ariaValueText
+                    + "<br> Message: " + document.getElementById(Text).ariaValueText
+            }).then(
+            message => alert("message envoyé avec succes")
+            );
+        }
+    </script>
+
+</body>
+</html>
